@@ -1,0 +1,25 @@
+PROYECTO SUPERMERCADO - CONEXION A MYSQL/MARIADB
+
+1. Iniciar MySQL desde XAMPP.
+2. Abrir phpMyAdmin e importar el archivo supermercado.sql que te compartieron.
+   El dump crea las tablas, pero si la base de datos no existe, creala primero con:
+       CREATE DATABASE supermercado;
+   Seleccioná esa base de datos e importá el SQL.
+3. En NetBeans, abrir el proyecto desde la carpeta Supermercado.
+4. Agregar el conector JDBC:
+   - Descargar MySQL Connector/J (o usar el conector MariaDB que ya tengas instalado).
+   - En NetBeans: clic derecho en Libraries/Bibliotecas > Add JAR/Folder y seleccionar el .jar del conector.
+5. Revisar src/com/modelo/Conexion.java:
+       URL jdbc:mysql://localhost:3306/supermercado
+       USER root
+       PASSWORD ""
+   Cambiar usuario/contraseña si tu MySQL tiene otra configuración.
+6. Ejecutar supermercado.Main.
+
+Cambios incluidos:
+- Al iniciar, carga clientes, productos y empleados desde la base de datos.
+- Guarda nuevos clientes, productos y empleados en sus tablas.
+- Registra la compra y sus detalles en una transacción SQL y actualiza el stock en MySQL.
+- Los errores de conexión se muestran al iniciar.
+
+Importante: el historial de compras que se muestra dentro del objeto Cliente todavía se mantiene en memoria; las ventas sí se guardan en compra y detalle_compra. El archivo SQL compartido contiene registros de ejemplo, así que no lo importes repetidamente sobre una base ya cargada sin antes hacer una copia de seguridad.

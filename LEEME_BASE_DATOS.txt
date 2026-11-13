@@ -1,0 +1,26 @@
+SUPERMERCADO - VERSION CON CONEXION A MYSQL/MARIADB
+
+CAMBIOS REALIZADOS
+- Conexion.java centraliza la conexion y devuelve un error claro si falla.
+- Al iniciar, Main carga clientes, productos y empleados desde la base supermercado.
+- Los controladores guardan nuevos clientes, productos y empleados en MySQL.
+- Al finalizar una venta se guarda la compra y sus detalles y se actualiza el stock en una transaccion SQL.
+
+ANTES DE EJECUTAR
+1. Inicia MySQL/MariaDB desde XAMPP.
+2. En phpMyAdmin crea/selecciona la base de datos `supermercado` e importa el archivo supermercado.sql incluido.
+   Si ya tenes la base con datos que queres conservar, no vuelvas a importar el dump sin revisar primero: puede dar errores por tablas/registros existentes.
+3. En NetBeans agrega el driver JDBC al proyecto:
+   - Descarga MySQL Connector/J (mysql-connector-j) o usa el driver MariaDB JDBC.
+   - Click derecho al proyecto > Properties > Libraries > Add JAR/Folder y selecciona el archivo .jar.
+4. Revisa src/com/modelo/Conexion.java. Por defecto usa:
+   URL jdbc:mysql://localhost:3306/supermercado
+   usuario root
+   contraseña vacía
+   Si tu instalación usa otra contraseña o puerto, cámbialos ahí.
+5. Ejecuta supermercado.Main.
+
+NOTAS
+- El proyecto se compiló correctamente con javac tras los cambios. No se pudo probar una conexión real a tu servidor local desde este entorno.
+- Si la conexión falla, la ventana de error mostrará el motivo. Asegúrate de que el driver JDBC esté agregado y que el servidor esté encendido.
+- Si una venta falla al guardarse en MySQL, el programa avisa que reinicies para volver a cargar el stock real desde la base de datos.
